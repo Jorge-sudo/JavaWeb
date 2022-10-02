@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Definimos que este documento hara uso de javaEE version -->
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+        metadata-complete="true">
+    
+    <!-- Configuramos los parametros-->
+    <context-param>
+        <!-- Ponemos el nombre-->
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <!-- Valor de Development ya que esta aplicacion esta en desarrollo-->
+        <param-value>Development</param-value>
+    </context-param>
+    <!-- Configuramos los Servlets-->
+    <servlet>
+        <!-- nombre-->
+        <servlet-name>Faces Servlet</servlet-name>
+        <!-- Indicamos de la clase Servlet -->
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <!-- con el "1" espesificamos que si se levante al momento de cargar nuestra aplicacion web -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <!-- Espesificamos que cualquier ruta que incluya la cadena de faces se activara JavaServerFaces -->
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <!-- Es el tiempo que durara la session de un usuario en este caso dura 30 minutos, pero podemos modificarlo
+    con -1 la session nunca expira    -->
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <!-- Indicamos cual es el Archivo de inicio de nuestra aplicacion Web en este caso "Index.xhtml" -->
+        <welcome-file>faces/index.xhtml</welcome-file>
+    </welcome-file-list>
+</web-app>

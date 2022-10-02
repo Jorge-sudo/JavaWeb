@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glassfish-ejb-jar PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 EJB 3.1//EN"
+"http://glassfish.org/dtds/glassfish-ejb-jar_3_1-1.dtd" >
+<glassfish-ejb-jar>
+    <!-- Esta cnfiguracion es para JAX-WS solo para eso indicamos la clase y el tipo de autenticacion
+    que en este caso es el BASIC-->
+    <enterprise-beans>
+        <ejb>
+            <ejb-name>PersonaServiceImpl</ejb-name>
+            <webservice-endpoint>
+                <port-component-name>PersonaServiceImpl</port-component-name>
+                <login-config>
+                    <auth-method>BASIC</auth-method>
+                </login-config>
+            </webservice-endpoint>
+        </ejb>
+    </enterprise-beans>
+</glassfish-ejb-jar>

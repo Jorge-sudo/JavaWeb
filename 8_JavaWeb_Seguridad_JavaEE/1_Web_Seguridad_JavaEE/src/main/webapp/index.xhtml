@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Sistema SGA</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h2>Sistema SGA</h2>
+        <!-- En este caso si el usuario ya hizo login se le dara la bienvenida -->
+        Bienvenido: <h:outputText value="#{p:userPrincipal()}" />
+        <h:form>
+            <p:messages />
+            <!-- Solo se mostrara este panel si el usuario hizo login con el rol de ADMIN o USER  -->
+            <p:panelGrid columns="1" rendered="#{p:ifGranted('ROLE_ADMIN') || p:ifGranted('ROLE_USER')}" >
+                <!-- Este botton solo se mostrara si se hizo login con USER o ADMIN  -->
+                <h:commandButton value="Listar Personas" action="listarPersonas" />
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>

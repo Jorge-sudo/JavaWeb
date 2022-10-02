@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd" >
+<struts>
+    <!-- Espesificamos que tipo de paquete utilizaremos existe varios tipos de paquetes agregamos el por 
+    default  -->
+    <package name="struts2" extends="struts-default" >
+        <!-- Aqui indicamos que clase sera la action en este caso se ejecutara el metodo de execute de la 
+            clase HolaMundoAction     -->
+        <action name="saludar" class="beans.HolaMundoAction" >
+            <!-- Aqui si se llega a retornar la palabra de Exito entonces se redirijira a la clase de saludos.jsp  -->
+            <result name="exito" >/saludos.jsp</result>
+        </action>
+    </package>
+</struts>

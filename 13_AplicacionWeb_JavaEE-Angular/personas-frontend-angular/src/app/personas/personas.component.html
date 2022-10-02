@@ -1,0 +1,24 @@
+
+<!-- Este componente es para agregar mas personas -->
+<div style="text-align: center">
+  <!-- asociamos el click=LlamaMetodoAgregar -->
+  <button style="cursor: pointer" (click)="irAgregar()">+</button>
+</div>
+
+<div class="box">
+  <div class="item" *ngFor="let persona of personas">
+    <ul>
+      <li>
+        <!-- lo agregamos como un link para que cuando le demos click podamos actualizar persona
+        tambien pasamos al path de personas con el routerLink mandamos el id de la persona  -->
+        <a [routerLink]="['/personas', persona.idPersona]">
+            {{persona.nombre}}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- incrusta el componente de formulario al momento de darle click a agregar entonces se despliega
+un componente para agregar persona desde el formulario -->
+<router-outlet></router-outlet>

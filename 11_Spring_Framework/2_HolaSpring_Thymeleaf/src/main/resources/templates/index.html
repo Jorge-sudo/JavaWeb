@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<!-- para que podamos manejar nuestro HTML con Thymeleaf hacemos lo siguiente  -->
+<html xmlns:th="http://www.thymeleaf.org" >
+    <head>
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Inicio</h1>
+        <!-- para acceder al valor "mensaje" de Spring hacemos lo siguiente utilizando Expresion Lengua 
+        aun que no es igual al del JSPs es muy similar -->
+        <p th:text="${mensaje}" ></p>
+        <p th:text="${saludo}" ></p>
+    </body>
+</html>

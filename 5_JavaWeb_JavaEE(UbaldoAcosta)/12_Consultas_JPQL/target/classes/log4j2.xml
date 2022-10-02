@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <!-- Con esto indicamos que la informacion enviaremos a la consola -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- Aqui elejimos cual sera el patron de como enviaremos nuestro mensajes 
+            Especificamos el formato = %d{Hora:minutos:segundos} [tiempo] %-nivel %-patron -->
+            <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} -%msg%n"></PatternLayout>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <!--  Espesificamos cual es el nivel la cual trabajaremos bug = muestra_toda_la_informacion
+        lo recomendable es el nivel de info para que no muestre demasiada informacion en la consola  -->
+        <Root level="debug">
+            <!-- Con esto indicamos a donde enviaremos la informacion en este caso a la consola -->
+            <AppenderRef ref="Console" /> 
+        </Root>
+    </Loggers>
+</Configuration>

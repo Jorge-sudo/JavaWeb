@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Esta es la configuracion de JPA-->
+<persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence                                                          http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <!-- Para agregar la unidad de persistencia en JPA-->
+  <!-- El servidor no soporta la transaccion LOCAL-RESOURCE_LOCAL, por lo tanto debemos modifivar y que 
+    el servidor se encarge de administrar todo el manejo de transacciones -->
+  <persistence-unit name="PersonaPu" transaction-type="JTA">
+    <!-- Agregamos la configuracion de JTA -->
+    <jta-data-source>jdbc/PersonaDb</jta-data-source>
+    <!-- Ahora configuraremos la conexion JTA JDBC hacia la base de datos pero ahora  en sel servidor de GlasFish -->
+    <!-- Ponemos esto en comentarios por que ya no lo necesitaremos esto lo configuraremos en Glasfish
+        <class>dominio.Persona</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url " value="jdbc:mysql://localhost:3306/test_jpa?useSSL=false&amp;useTimezone=true&amp;serverTimezone=UTC" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="danay hija" />
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.MysqlDataSource" />
+            <property name="eclipselink.logging.level.sql" value="FINE" />
+            <property name="eclipselink.logging.parameters" value="true" />
+        </properties>
+        -->
+    <class>dominio.Persona</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties/>
+  </persistence-unit>
+</persistence>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml" >
+    <head>
+        <title>Plantilla</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <!-- Esta pagina sera la plantilla que vamos a reutilizar en las demas paginas HTML -->
+        
+        <!-- header=encabezado, para poder reutilizar este header en otras paginas definimos que podra ser 
+        reutilizable le asignamos el nomnre de 'header'-->
+        <header th:fragment="header" >
+            <!-- Con th:text sustituimos el texto de Titulo -->
+            <h1 th:text="#{plantilla.titulo}" >Titulo</h1>
+        </header>
+        
+        <!-- Agregamos la seccion de footet -->
+        <footer th:fragment="footer" >
+            <!-- Con doble corchetes agregamos directamente el texto ya sin sustituir -->
+            <p> [[#{plantilla.pie-pagina}]] <a href="http://www.facebook.com" target="_blank" >Facebook</a> </p>
+        </footer>
+        
+    </body>
+</html>

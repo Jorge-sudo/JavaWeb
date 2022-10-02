@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" > <!-- Agregamos el nameSpace de Seguridad -->
+    <head>
+        <title>Plantilla</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <!-- Esta pagina sera la plantilla que vamos a reutilizar en las demas paginas HTML -->
+        
+        <!-- header=encabezado, para poder reutilizar este header en otras paginas definimos que podra ser 
+        reutilizable le asignamos el nomnre de 'header'-->
+        <header th:fragment="header" >
+            <!-- Con th:text sustituimos el texto de Titulo -->
+            <h1 th:text="#{plantilla.titulo}" >Titulo</h1>
+        </header>
+        
+        <!-- Agregamos la seccion de footet -->
+        <footer th:fragment="footer" >
+            <div>
+                <br/>
+                <!-- Aqui agregamos 2 links para los idiomas -->
+                <a th:href="@{/(idioma=es)}">ES</a>|
+                <a th:href="@{/(idioma=en)}">EN</a>|
+                <span> [[#{plantilla.pie-pagina}]] <a href="http://www.facebook.com" target="_blank" >Facebook</a> </span>
+                <form method="POST" th:action="@{/logout}" ><!-- Logout es el path que Spring reconoce para cerrar Session -->
+                    <!-- Agregaremos el usuario que inicio session con "name" sabemos el nombre-->
+                    <b>User: </b> <span sec:authentication="name">Usuario que hizo login</span>|
+                    <!-- Con principal.authorities sabremos que roles cumple el usuario  -->
+                    <b>Roles: </b> <span sec:authentication="principal.authorities" >Roles de Usuario</span>
+                    
+                    <!-- Aqui utilizamos JavaScript para hacer sumbmit con el metodo padre parent.submit -->
+                    <a href="#" onclick="this.parentNode.submit();" >Cerrar Session</a>
+                </form>
+            </div>
+            <!-- Con doble corchetes agregamos directamente el texto ya sin sustituir -->
+        </footer>
+        
+    </body>
+</html>

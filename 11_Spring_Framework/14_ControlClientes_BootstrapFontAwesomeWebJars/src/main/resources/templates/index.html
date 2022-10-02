@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- para que podamos manejar nuestro HTML con Thymeleaf hacemos lo siguiente  -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="plantillas/plantilla :: head" >
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <header th:replace="plantillas/plantilla :: header" ></header>
+        
+        <section th:replace="plantillas/botonesAgregar :: botonesAgregar" ></section>
+        
+        <section th:replace="plantillas/agregarCliente :: agregarCliente" ></section> 
+        
+        <section th:replace="plantillas/listadoClientes :: listadoClientes" ></section> 
+        
+        <footer th:replace="plantillas/plantilla :: footer" ></footer>  
+        
+    </body>
+</html>

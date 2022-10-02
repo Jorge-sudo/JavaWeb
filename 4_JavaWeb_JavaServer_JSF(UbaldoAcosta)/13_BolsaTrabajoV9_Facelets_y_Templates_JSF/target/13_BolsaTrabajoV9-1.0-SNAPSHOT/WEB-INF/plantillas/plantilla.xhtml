@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Agregamos la anotacion de JavaServer Faces y Facelets en esta pagina  
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Proyecto Bolsa Trabajo</title>
+        <!-- Aqui agregamos los Estilos, pero no necesitamos espesificar la ruta si es que se encuentra en la ruta 
+        resources/css/estilo.css por que JavaServer Faces lo reconocera por automatico  -->
+        <h:outputStylesheet library="css" name="estilos.css" />
+    </h:head>
+    <h:body>
+        <!-- Definiremos varias secciones en esta plantilla y posteriormente cada una de las paginas podra modificar
+        el contenido de esta pagina simplemente rescribiendo las secciones que le interece modificar, pero si no 
+        necesita modificar todas las secciones, simplemente va reutilizar todo lo que definamos en esta plantilla-->
+
+        <!-- Agregamos el div principal -->
+        <div id="wrapper" >
+            <!-- Configuramos el Header=encabezado -->
+            <div id="header-wrapper" >
+                <!-- Agregamos una seccion que podamos modificar -->
+                <ui:insert name="top">
+                    <div id="header" >
+                        <div id="logo" >
+                            <h1>Bolsa de Trabajo</h1>
+                        </div>
+                    </div>
+                </ui:insert>
+            </div>
+
+            <!-- Agregamos el contenido -->
+            <div id="page" >
+                <!-- Agregamos otra seccion que podamos modificar -->
+                <ui:insert name="content">Contenido</ui:insert>
+            </div>
+
+            <!-- Agregamos el footer=pie de página-->
+            <div id="footer" >
+                <ui:insert name="botoom">Derechos Reservador - Jorge Luis Arone Delgado</ui:insert>
+            </div>
+            
+        </div>
+    </h:body>
+</html>

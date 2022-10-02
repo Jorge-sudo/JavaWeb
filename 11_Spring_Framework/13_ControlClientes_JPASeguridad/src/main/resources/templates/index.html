@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- para que podamos manejar nuestro HTML con Thymeleaf hacemos lo siguiente  -->
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <!-- El header lo tomaremos desde la plantilla que ya esta definido para eso hacemos lo siguiente 
+        indicamos donde se encuentra nuestra plantilla y :: el elemento  -->
+        <header th:replace="plantillas/plantilla :: header" ></header>
+        
+        <!-- Hacemos lo siguiente para que los usuario que son admin puedan ver este link
+        en authorize preguntamos si este usuario tiene el rol de admin con hasRole -->
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}" >[[#{persona.crear}]]</a>
+        
+        <br/>
+        <br/>
+        <div th:if="${personas != null and !personas.empty}">
+            <table border="1" >
+                <tr>
+                    <th>[[#{persona.nombre}]]</th>
+                    <th>[[#{persona.apellido}]]</th>
+                    <th>[[#{persona.email}]]</th>
+                    <th>[[#{persona.telefono}]]</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')" >[[#{accion.editar}]]</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')" >[[#{accion.eliminar}]]</th>
+                </tr>
+
+                <!-- Hacemos un each con Thymeleaf buscamos la variable personas y iteramos con la varibale persona -->
+                <tr th:each="persona : ${personas} " >
+                    <td th:text="${persona.nombre}" ></td>
+                    <td th:text="${persona.apellido}" ></td>
+                    <td th:text="${persona.email}" ></td>
+                    <td th:text="${persona.telefono}" ></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')" > <a th:href="@{/editar/} + ${persona.idPersona}">[[#{accion.editar}]]</a> </td>
+                    <!-- lo siguiente es como se puede enviar el parametro de id de diferente forma -->
+                    <td sec:authorize="hasRole('ROLE_ADMIN')" > <a th:href="@{/eliminar(idPersona=${persona.idPersona})} " >[[#{accion.eliminar}]]</a> </td>
+                </tr>
+            </table>
+        </div>
+        <!-- Si la lista personas es  null o esta vacia entonces... -->
+        <div th:if="${personas == null or personas.empty}">
+            [[#{persona.lista-vacia}]]
+        </div>
+        <br/>
+        <!-- -->
+        <footer th:replace="plantillas/plantilla :: footer" ></footer> 
+    </body>
+</html>

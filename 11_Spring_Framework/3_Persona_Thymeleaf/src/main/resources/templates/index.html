@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- para que podamos manejar nuestro HTML con Thymeleaf hacemos lo siguiente  -->
+<html xmlns:th="http://www.thymeleaf.org" >
+    <head>
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Inicio</h1>
+        <!-- para acceder al valor "mensaje" de Spring hacemos lo siguiente utilizando Expresion Lengua 
+        aun que no es igual al del JSPs es muy similar -->
+        <p th:text="${mensaje}" ></p>
+        <p th:text="${saludo}" ></p>
+        <br/>
+        <!-- Si la lista personas es diferente a null y no esta vacia entonces... -->
+        <div th:if="${personas != null and !personas.empty}">
+            <table border="1" >
+                <tr>
+                    <th>Nombre </th>
+                    <th>Apellido </th>
+                    <th>Email </th>
+                    <th>Telefono </th>
+                </tr>
+
+                <!-- Hacemos un each con Thymeleaf buscamos la variable personas y iteramos con la varibale persona -->
+                <tr th:each="persona : ${personas} " >
+                    <td th:text="${persona.nombre}" ></td>
+                    <td th:text="${persona.apellido}" ></td>
+                    <td th:text="${persona.email}" ></td>
+                    <td th:text="${persona.telefono}" ></td>
+                </tr>
+            </table>
+        </div>
+        <!-- Si la lista personas es  null o esta vacia entonces... -->
+        <div th:if="${personas == null or personas.empty}">
+            La lista de personas esta Vacia
+        </div>
+    </body>
+</html>

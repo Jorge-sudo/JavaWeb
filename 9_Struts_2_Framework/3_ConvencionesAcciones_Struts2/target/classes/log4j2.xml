@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <!-- Con esto indicamos que la informacion enviaremos a la consola -->
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <!-- Aqui elejimos cual sera el patron de como enviaremos nuestro mensajes 
+            Especificamos el formato = %d{Hora:minutos:segundos} [tiempo] %-nivel %-patron -->
+            <PatternLayout pattern="(%F:%L) - %m%n"></PatternLayout>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <!--  agregamos xwork2 por que struts trabaja con ello  -->
+        <Logger name="com.opensymphony.xwork2" level="info" ></Logger>
+        <Logger name="org.apache.struts2" level="info" />
+        <Root level="info">
+            <AppenderRef ref="STDOUT" />
+        </Root>
+    </Loggers>
+</Configuration>

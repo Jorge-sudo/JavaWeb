@@ -1,0 +1,9 @@
+dominio\Persona_.class
+dominio\Usuario.class
+servicio\PersonaService.class
+dominio\Persona.class
+datos\PersonaDao.class
+datos\PersonaDaoImpl.class
+dominio\Usuario_.class
+web\PersonaServlet.class
+servicio\PersonaServiceImpl.class

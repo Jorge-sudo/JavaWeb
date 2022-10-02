@@ -1,0 +1,14 @@
+
+<!-- Este es el componente que recibira los atributos de nombre  -->
+<div class="box">
+  <!-- #f=nombre del formulario  ngSubmit=si cada uno de los campos son validosy mandamos a llamar el metodo
+  onGuardarPersona() -->
+  <form class="item" #f="ngForm" (ngSubmit)="f.form.valid && onGuardarPersona()">
+    <!-- capturamos el valor de nombre ngModel=para asociar el campo input -->
+    <input type="text" name="nombre" placeholder="Nombre" [(ngModel)]="nombreInput" required/>
+    <button type="submit" style="cursor: pointer">+</button>
+    <!-- Este boton es para eliminar persona que solo si mostrara si  *ngIf="preguntamos si la persona es diferente
+      de null" el metodo click si se da click se llama la funcion onEliminarPersona-->
+    <button *ngIf="idPersona != null" type="submit" style="cursor: pointer" class="buttonRed" (click)="onEliminarPersona()">-</button>
+  </form>
+</div>

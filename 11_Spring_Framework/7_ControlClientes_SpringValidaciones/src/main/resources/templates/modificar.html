@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml"><!-- Esto nos obliga que las etiquetas HTML deben abrirse como cerrarse -->
+    <head>
+        <title>Datos de la Persona</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Datos de la Persona</h1>
+        <a th:href="@{/}" >Regresar</a>
+        <br/><br/>
+        <form th:action="@{/guardar}" method="POST" th:object="${persona}"><!-- Este formulario se asociara al objeto de 
+            tipo persona que compartimos en el controlador -->
+            <!--  Hidden quiere decir que no s mostrara en el formulario si no que es parte del codigo de ello, este
+            dato solo se vera en el codigo fuente y no en la vista  -->
+            <input type="hidden" name="idPersona" th:field="*{idPersona}" /><!-- Con este campo queremos decir a Spring que 
+            este objeto persona ya tiene un ID por lo tanto sera actualizado y no insertado  -->
+            <label for="nombre" >Nombre: </label>
+            <input type="text" name="nombre" th:field="*{nombre}" /><!-- Con th:field asociamos a que atributo pertence de Persona -->
+            
+            <!-- Este span agregamos para que los mensajes de la validacion de @NotEmpty aparezcan 
+            lo que hacemos es que si el campo de nombre tiene errores con el comodin de #field -->
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" >Error de nombre</span>
+            <br/>
+            <label for="apellido" >Apellido: </label>
+            <input type="text" name="apellido" th:field="*{apellido}" />
+            <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" >Error de apellido</span>
+            <br/>
+            <label for="email" >Email: </label>
+            <input type="text" name="email" th:field="*{email}" />
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" >Error de Email</span>
+            <br/>
+            <label for="telefono" >Telefono: </label>
+            <input type="tel" name="telefono" th:field="*{telefono}" />
+            <br/>
+            <input type="submit" name="guardar" value="Guardar" />
+        </form>
+    </body>
+</html>

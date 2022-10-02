@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                        http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+    
+    <lifecycle>
+        <phase-listener>
+            beans.lifecycle.DebuggerListener
+        </phase-listener>
+    </lifecycle>
+    
+    <!-- Esto es para configurar el archivo "jsf.properties", y que el mensaje de "valor requerido" sea reconocido
+    tambien por este medio podemos cambiar el idioma como español y ect-->
+    <application>
+        <!-- Aqui configuramos el idioma por defaul en este caso configuraremos en Español-->
+        <locale-config>
+            <default-locale>es</default-locale>
+        </locale-config>
+        <!-- Aqui configuramos el archivo de "mensajes.properties" que insertamos la etiquetas-->
+        <resource-bundle>
+            <base-name>mensajes</base-name>
+            <var>msgs</var>
+        </resource-bundle>
+        <!-- Aqui asociamos el archivo "jsf.properties" -->
+        <message-bundle>jsf</message-bundle>
+    </application>
+
+</faces-config>

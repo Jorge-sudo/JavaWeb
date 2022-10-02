@@ -1,0 +1,12 @@
+dominio\Usuario.class
+servicio\PersonaService.class
+dominio\Persona.class
+servicio\UsuarioServiceImpl.class
+datos\PersonaDao.class
+datos\PersonaDaoImpl.class
+datos\UsuarioDaoImpl.class
+web\ConfiguracionBean.class
+web\PersonaBean.class
+servicio\PersonaServiceImpl.class
+servicio\UsuarioService.class
+datos\UsuarioDao.class
